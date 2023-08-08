@@ -1,0 +1,82 @@
+---
+title: Quarto and The Two Data Science Worlds
+author: Carlos Scheidegger
+date: 2023-08-10
+format: 
+  revealjs:
+    footer: <https://cscheid.net/to/esip-2023.html> ([source](https://github.com/cscheid/2023-esip-quarto-talk))
+---
+
+## Who I am
+
+- Software engineer at [Posit](https://posit.co), have been there for just over two years
+- Recovering academic
+
+### Detour: Cayce Pollard
+
+- Cayce Pollard is the protagonist of William Gibson's [Pattern Recognition](https://www.powells.com/book/pattern-recognition-9780425198681)
+  - (detour: [The Peripheral](https://www.powells.com/book/the-peripheral-9780425276235) is a much better modern Gibson novel, but we're already far afield of this talk now...)
+- Pollard has a condition where she's physically allergic to bad logos
+- Well, I'm physically allergic to bad software
+  - With apologies to [Hedberg](https://en.wikipedia.org/wiki/Mitch_Hedberg): "I used to hate software. I still do, but I used to too."
+
+## What I'm not here for, and what I am
+
+- I'm not here to sell you on Quarto, but I hope you'll like what we're doing with it
+- I'm not here to convince you one data science world is better or worse than the other
+- I _am_ here to give you perspective on the differences, how they affect organizations, and how we're designing Quarto to help
+
+## The data science worlds (so far)
+
+### The Tidyverse
+
+- RMarkdown (knitr)
+- Tidyverse: dplyr, ggplot2, etc.
+- A _Markdown document_ is the "prime" source of truth
+  - executed top-to-bottom from the start
+
+### The Jupyter Ecosystem
+
+- (Now, Jupyter means "Julia", "Python", and "R")
+- Jupyter Book, MyST Markdown
+- Python: Matplotlib, Altair, Pandas
+  - And many, many more!
+- A _Jupyter notebook_ is the "prime" source of truth
+  - naturally stores execution output in a structured format
+
+## Quarto
+
+### Quarto: What
+
+- From [our website](https://quarto.org): An open-source scientific and technical publishing system
+- A compatibility layer for the two largest data science ecosystems
+- A set of good defaults for a technical website/book
+- A way to get an accessible webpage _and_ a publication-ready PDF from the same source
+- A (really big) wrapper around Pandoc
+
+### Quarto: Why?
+
+- [Conway's Law](https://en.wikipedia.org/wiki/Conway's_law): "Any organization that designs a system (defined broadly) will produce a design whose structure is a copy of the organization's communication structure"
+
+## Quarto: Specifics
+
+- Inputs: markdown, Jupyter notebooks
+- Outputs:
+  - html 
+    - single documents: papers, presentations, webpages, emails
+    - multiple documents: book chapters, websites
+  - pdf (via latex or typst)
+  - docx, pptx
+  - Confluence, Docusaurus, oh my
+
+## Authoring documents
+
+- RStudio has great support, including a visual editor
+- I use VS Code, and it's great too
+- Any text editor works
+
+### Collaboration across worlds
+
+- Jupyter and knitr engines can both run on the same project
+  - Different book chapters of the same book can use different engines
+- Notebook embeds
