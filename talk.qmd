@@ -4,21 +4,28 @@ author: Carlos Scheidegger
 date: 2023-08-10
 format: 
   revealjs:
+    slide-number: c/t
     footer: <https://cscheid.net/to/esip-2023.html> ([source](https://github.com/cscheid/2023-esip-quarto-talk))
 ---
 
-## Who I am
+# Who I am
 
 - Software engineer at [Posit](https://posit.co), have been there for just over two years
-- Recovering academic
+- Recovering academic (tenured computer science prof, who then realized wanted something else)
 
-### Detour: Cayce Pollard
+## Detour: Cayce Pollard
 
-- Cayce Pollard is the protagonist of William Gibson's [Pattern Recognition](https://www.powells.com/book/pattern-recognition-9780425198681)
-  - (detour: [The Peripheral](https://www.powells.com/book/the-peripheral-9780425276235) is a much better modern Gibson novel, but we're already far afield of this talk now...)
-- Pollard has a condition where she's physically allergic to bad logos
-- Well, I'm physically allergic to bad software
-  - With apologies to [Hedberg](https://en.wikipedia.org/wiki/Mitch_Hedberg): "I used to hate software. I still do, but I used to too."
+- Pollard is the protagonist of William Gibson's [Pattern Recognition](https://www.powells.com/book/pattern-recognition-9780425198681)
+  - (detour: [The Peripheral](https://www.powells.com/book/the-peripheral-9780425276235) is the great modern Gibson novel, but we're already far afield of this talk now)
+- she is literally physically allergic to bad logos
+- ... well, I'm physically allergic to bad software
+
+## Detour: Cayce Pollard
+
+- (With apologies to [Hedberg](https://en.wikipedia.org/wiki/Mitch_Hedberg),) I used to hate software. I still do, but I used to too.
+- I can't promise you that Quarto is perfect (trust me, I _know_)
+- I can promise that we try very hard to make it good, and that we are pretty good at it.
+- **I think Quarto goes further into creating a good authoring experience than most other software I use on a daily basis.**
 
 ## What I'm not here for, and what I am
 
@@ -26,27 +33,34 @@ format:
 - I'm not here to convince you one data science world is better or worse than the other
 - I _am_ here to give you perspective on the differences, how they affect organizations, and how we're designing Quarto to help
 
-## The data science worlds (so far)
+# The data science worlds (so far)
 
-### The Tidyverse
+## The Tidyverse
 
 - RMarkdown (knitr)
 - Tidyverse: dplyr, ggplot2, etc.
 - A _Markdown document_ is the "prime" source of truth
   - executed top-to-bottom from the start
 
-### The Jupyter Ecosystem
+## The Jupyter Ecosystem
 
-- (Now, Jupyter means "Julia", "Python", and "R")
 - Jupyter Book, MyST Markdown
 - Python: Matplotlib, Altair, Pandas
   - And many, many more!
 - A _Jupyter notebook_ is the "prime" source of truth
   - naturally stores execution output in a structured format
 
-## Quarto
+::: {.notes}
 
-### Quarto: What
+It's worth pointing out that Jupyter means "Julia", "Python", and "R", and so it's deeper than Python. 
+It's also worth pointing out that knitr supports the execution of other languages such as Python and Julia.
+Still, it's clear that R is the dominant language in the knitr/rmd authoring ecosystem, and Python is the dominant language in the Jupyter ecosystem.
+
+:::
+
+# Quarto
+
+## Quarto: What?
 
 - From [our website](https://quarto.org): An open-source scientific and technical publishing system
 - A compatibility layer for the two largest data science ecosystems
@@ -54,11 +68,12 @@ format:
 - A way to get an accessible webpage _and_ a publication-ready PDF from the same source
 - A (really big) wrapper around Pandoc
 
-### Quarto: Why?
+## Quarto: Why?
 
 - [Conway's Law](https://en.wikipedia.org/wiki/Conway's_law): "Any organization that designs a system (defined broadly) will produce a design whose structure is a copy of the organization's communication structure"
+- We want to make it easy for you to cross the bridge to the other world and back
 
-## Quarto: Specifics
+## Quarto: How?
 
 - Inputs: markdown, Jupyter notebooks
 - Outputs:
@@ -69,14 +84,60 @@ format:
   - docx, pptx
   - Confluence, Docusaurus, oh my
 
-## Authoring documents
+# Authoring documents
+
+## Editing files 
 
 - RStudio has great support, including a visual editor
-- I use VS Code, and it's great too
-- Any text editor works
+- I use VS Code
+- Any text editor (and there are e.g. Emacs and vim modes)
 
-### Collaboration across worlds
+## Collaborating
 
 - Jupyter and knitr engines can both run on the same project
   - Different book chapters of the same book can use different engines
-- Notebook embeds
+- Notebook embeds use jupyter notebooks
+  - computation can be done in quarto or any third party tool (colab, etc.)
+  - refer to them directly in quarto
+  - reuse them in your jupyter workflows
+
+# Publishing
+
+- quarto.pub: one-button publishing for HTML(+pdf, docx, etc) documents
+- additional first-class support for 
+  - GitHub pages
+  - Posit Connect
+  - Confluence
+  - Netlify
+- Coming up: [MECA](https://www.niso.org/standards-committees/meca)
+
+## Kicking the Tires
+
+So you want to extend Quarto. From easy to hard (prereqs in parenthesis):
+
+- Easy (CSS/SCSS): CSS and SCSS themes
+- Easy (Javascript): custom Javascript
+- Easy-to-medium ([ObservableHQ](https://observablehq.com/)): using OJS to create interactive webpages that use R and Python outputs
+- Medium ([Pandoc](https://pandoc.org/), [Lua](https://lua.org/)): Lua filters to control the generation of the final document in any format
+- Medium-to-hard (LaTeX): custom formats (e.g. journal templates)
+- Hard (Python, TypeScript): New execution engines
+
+# The good
+
+- You can use quarto today to write websites, academic papers, blogs, and books.
+- You can use knitr and you can use jupyter
+- It's not a prototype! People use it in production. In VS Code alone we have >50k active users.
+- In terms of editor support, quarto is already a big improvement over RMarkdown.
+
+::: {.notes}
+Mention YAML validation, etc.
+:::
+
+# The bad, and the ugly
+
+- Compared to other static generators, Quarto is slow. We have a plan, ETA early 2024.
+- Our documentation is good, but it's not great. We're working on it, and it gets better every week.
+- We wish there were more journal formats. We need your help, and we can help you help us!
+- Our error handling is better than most other tools, but it's still pretty bad.
+- It's easy to make "mistakes" that aren't Pandoc errors. We have a plan, ETA mid-to-late 2024.
+- Quarto still moves relatively fast; it's very much worth it to install the latest version, which is not necessarily easy for corporate and government users. Consider learning how to use continuous integration to get quarto to run on someone else's machine.
