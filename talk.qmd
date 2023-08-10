@@ -9,11 +9,12 @@ format:
     css:
       - posit-colors.css
       - rant-rave-revealjs.css
+    theme: posit-theme.scss
 ---
 
-<script type="module" src="talk.js"></script>
-
 # Who I am
+
+<script type="module" src="talk.js"></script>
 
 - Software engineer at [Posit](https://posit.co) (fka [RStudio](https://posit.co/downloads/))
   - I've been working on Quarto since I joined Posit
@@ -31,8 +32,7 @@ format:
 
 ACTION: drop the link on Zoom chat.
 
-If you want, I also could audible to an impromptu Quarto talk of your desire.
-These slides can serve as a reference point of entry for you.
+Mention improvised talk of audience's desire.
 
 :::
 
@@ -45,7 +45,7 @@ These slides can serve as a reference point of entry for you.
 
 She is physically allergic to bad logos
 
-![](img/michelin.png){.absolute width="100%" top="200"}
+![](img/michelin.png){.absolute width="1000px"}
 
 ::: footer
 <https://1000logos.net/michelin-logo/>
@@ -57,9 +57,8 @@ She is physically allergic to bad logos
 
 ::: {.incremental}
 
-- We don't have enough time
-
-- ... in the remainder of this decade
+- We don't have enough time in the remainder of this
+- ... decade
 
 :::
 
@@ -87,20 +86,22 @@ She is physically allergic to bad logos
 
 - I'll be honest about where Quarto is [great]{.rave}, and where it is [um, not great]{.rant}
 - Quarto isn't perfect (trust me, I _know_)
-- I can promise that we try very hard to make it good, and that we are pretty good at it
+- I can promise that we try very hard to make it good, and that we are good at it
 - **I think Quarto goes further into creating a good authoring experience than most other software I use on a daily basis.**
 
 ## I'll rave in slides that look like this {.rave}
 
-Quarto is awesome!
+::: {.no-list-bullets .incremental}
+
+[Pandoc](https://pandoc.org) is great!
+
+:::
 
 ## I'll rant in slides that look like this {.rant}
 
 ::: {.no-list-bullets .incremental}
 
 - YAML is the worst form of human-readable, human-writable structured data, except for all the others that have been tried.
-
-- (ok, I'm not going to tell you what _other_ software I think is bad)
 
 :::
 
@@ -119,7 +120,7 @@ Quarto is awesome!
 
 ## The Tidyverse
 
-- Code: R centric, "Tidyverse": dplyr, ggplot2, etc.
+- Code: R centric, "[Tidyverse](https://www.tidyverse.org/)": dplyr, ggplot2, etc.
 - Documents: RMarkdown, Bookdown, Blogdown, xaringan (knitr, "yihuiverse")
 - A _Markdown document_ is the "prime" source of truth
   - [execute top-to-bottom from the start]{.rave}
@@ -127,37 +128,88 @@ Quarto is awesome!
 
 ## The Jupyter Ecosystem
 
-- Documents: Jupyter Book, MyST Markdown, Jupyter notebooks
-- Code: Python-centric; Matplotlib, Altair, Pandas
+- Documents: [Jupyter Book](https://jupyterbook.org/en/stable/intro.html), [MyST Markdown](https://jupyterbook.org/en/stable/content/myst.html), Jupyter notebooks
+- Code: Python-centric; Matplotlib, [Altair](https://altair-viz.github.io/), Pandas, etc.
 - A _Jupyter notebook_ is the "prime" source of truth
   - [naturally stores execution output in a structured format]{.rave}
   - [easy to execute cells out of order]{.rant}
 
 ::: {.notes}
 
-It's worth pointing out that Jupyter means "Julia", "Python", and "R", and so it's deeper than Python. 
-It's also worth pointing out that knitr supports the execution of other languages such as Python and Julia.
-Still, it's clear that R is the dominant language in the knitr/rmd authoring ecosystem, and Python is the dominant language in the Jupyter ecosystem.
+Point out that Jupyter means "Julia", "Python", and "R", and so it's deeper than Python. 
+
+Point out that knitr also supports the execution of other languages such as Python and Julia.
+
+Point out that culturally, R is the dominant language in the knitr/rmd authoring ecosystem, and Python is the dominant language in the Jupyter ecosystem.
 
 :::
 
 # Quarto
 
+## Quarto: What? {.rave}
+
+::: {.fragment .fade-in-then-semi-out}
+- From [our website](https://quarto.org): An open-source scientific and technical publishing system
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+- A compatibility layer for the two largest data science ecosystems
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+- A way to get compatibility layer for the two largest data science ecosystems
+:::
+
 ## Quarto: What?
 
-- From [our website](https://quarto.org): An open-source scientific and technical publishing system
-- A compatibility layer for the two largest data science ecosystems
+::: {.fragment .fade-in-then-semi-out}
 - A rewrite of RMarkdown with multilanguage as a first-class concern
-- A set of default styles for technical websites/books
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+- A set of good default styles for technical websites/books
+:::
+
+## Quarto: What? {.rant}
+
+::: {.fragment .fade-in-then-semi-out}
 - A way to get an accessible webpage _and_ a publication-ready PDF from the same source
-- A ([really big]{.rant}) wrapper around Pandoc
+:::
 
-## Quarto: Why?
+::: {.fragment .fade-in-then-semi-out}
+- A really big wrapper around Pandoc
+:::
 
-- [Conway's Law](https://en.wikipedia.org/wiki/Conway's_law): "[Any organization that designs a system (defined broadly) will produce a design whose structure is a copy of the organization's communication structure]{.rant}"
-- We want to make it easy for you to cross the bridge to the other world and back
+::: {.fragment .fade-in-then-semi-out}
+- (please, no more, we've had enough!)
+:::
 
-## Quarto: Inputs {.rave}
+
+::: {.notes}
+
+Point to size being the cause of documentation becoming a problem.
+
+:::
+
+## Quarto: Why? {.rant}
+
+(NB: This slide is an **especially** personal perspective)
+
+- [Conway's Law](https://en.wikipedia.org/wiki/Conway's_law): "Any organization that designs a system (defined broadly) will produce a design whose structure is a copy of the organization's communication structure"
+- "Don't make moderately-hard things easy at the expense of making hard things impossible"
+  - (This *is* an effective way to create a captive user base!)
+
+::: {.notes}
+
+Say something like "We want to make it easy for you to cross the bridge to the other world and back."
+
+Say something like "Good tools have safe zones with predictable behavior, but also robust, accessible escape hatches."
+
+Good example: "output: asis" in knitr. Bad example: Excel.
+
+:::
+
+## Quarto: Inputs (and **outputs**) {.rave}
 
 - `.qmd` files: [markdown](https://quarto.org/docs/authoring/markdown-basics.html), like RMarkdown
 - `.ipynb` files: [Jupyter notebooks](https://nbformat.readthedocs.io/en/latest/), like Jupyter
@@ -172,7 +224,7 @@ Still, it's clear that R is the dominant language in the knitr/rmd authoring eco
 
 ::: {.notes}
 
-If you're used to RMarkdown (or blogdown or bookdown), YAML configuration this a place where Quarto is a lot better. Quarto will often tell you about invalid YAML entries, and Quarto has IDE support for YAML autocompletion.
+Mention YAML intelligence as an attempt to make it suck less in comparison to RMarkdown (or blogdown, bookdown).
 
 :::
 
@@ -181,9 +233,10 @@ If you're used to RMarkdown (or blogdown or bookdown), YAML configuration this a
 - HTML
   - single documents: papers, [presentations](https://quarto.org/docs/presentations/), webpages
   - multiple documents: books (and book chapters), websites, blogs
-- [PDF](https://quarto.org/docs/output-formats/pdf-basics) (via latex or typst)
+- [PDF](https://quarto.org/docs/output-formats/pdf-basics) (via [LaTeX](https://www.latex-project.org/) or [Typst](https://typst.app/))
 - [docx](https://quarto.org/docs/output-formats/ms-word), [pptx](https://quarto.org/docs/reference/formats/presentations/pptx)
-- Confluence, Docusaurus, oh my
+- [Confluence](https://www.atlassian.com/software/confluence), [Docusaurus](https://docusaurus.io/), [JATS](https://jats.nlm.nih.gov/), oh my
+- (Write your own custom output!)
 
 # Authoring documents
 
@@ -198,14 +251,14 @@ If you're used to RMarkdown (or blogdown or bookdown), YAML configuration this a
 - Jupyter and knitr engines can both run on the same project
   - One engine per document
   - [Both engines support multiple languages]{.rant}
-- Different book chapters of the same book can use different engines
+- [Different chapters of a book can use different engines]{.rave}
 
-## Use notebook _fragments_ as inputs {.rave}
+## Use notebook _parts_ as inputs {.rave}
 
 - [Notebook embeds](https://quarto.org/docs/authoring/notebook-embed.html) use jupyter notebooks
   - computation can be performed in quarto or any third party tool ([colab](https://research.google.com/colaboratory/), etc.)
   - refer to them directly in quarto
-  - reuse them in your jupyter workflows
+  - reuse them in your Jupyter workflows
 
 ## .. but wait! {.rant}
 
@@ -277,21 +330,18 @@ So you want to [extend Quarto](https://quarto.org/docs/extensions/creating). Fro
 - You can use quarto today to write websites, academic papers, blogs, and books.
 - You can use knitr and you can use jupyter
 - It's not a prototype! People use it in production. In VS Code alone we have >50k active users.
-- In terms of editor support, quarto is already a big improvement over RMarkdown.
+- In terms of editor support, Quarto is already a big improvement over RMarkdown.
 - Our YAML validation and auto-completion go a long way to help navigate the large API surface.
 
 :::
 
-::: {.notes}
-Mention YAML validation, etc.
-:::
 
 # Takeaways {.rant}
 
 ::: {.incremental .fade-in-then-semi-out}
 
 - Compared to other static generators, Quarto is slow. We have a plan, ETA early 2024.
-- Our documentation is good, but it's not great. We're working on it, and it gets better every week.
+- Our documentation is very good, but it should be even better. We're working on it, and it gets better every week.
 - We wish there were more journal formats. We need your help, and we can help you help us!
 - Our error handling is better than most other tools, but it's still pretty bad.
 - It's easy to make "mistakes" that aren't Pandoc errors. We have a plan, ETA mid-to-late 2024.

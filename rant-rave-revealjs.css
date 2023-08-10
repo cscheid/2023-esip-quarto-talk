@@ -10,15 +10,23 @@ div.slide-background.rant {
     opacity: 0.2;
 }
 
-div.footer.rave, div.footer.rave a {
+.reveal a {
+    text-decoration: underline;
+}
+
+div.footer.rave, div.footer.rave a, section.slide.rave, section.slide.rave a {
     color: white;
 }
 
-div.footer.rant, div.footer.rant a {
+div.footer.rave a, div.footer.rant a, section.slide.rave a {
+    text-decoration: underline;
+}
+
+div.footer.rant, div.footer.rant a, section.slide.rant, section.slide.rant a {
     color: black;
 }
 
-div.footer.rave a, div.footer.rant a {
+div.footer.rave a, div.footer.rant a, section.slide.rant a {
     text-decoration: underline;
 }
 
