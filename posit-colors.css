@@ -1,0 +1,26 @@
+/* from our Brand Assets & Style Guide */
+
+:root {
+  /* primary */
+  --posit-blue: #447099;
+  --posit-orange: #EE6331;
+  --posit-gray: #404041;
+  --posit-white: #FFFFFF;
+
+  /* secondary */
+  --posit-teal: #419599;
+  --posit-green: #72994E;
+  --posit-burgundy: #9A4665;  
+}
+
+.posit-blue {
+    color: var(--posit-blue);
+}
+
+.posit-orange {
+    color: var(--posit-orange);
+}
+
+.posit-gray {
+    color: var(--posit-gray);
+}

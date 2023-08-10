@@ -6,49 +6,132 @@ format:
   revealjs:
     slide-number: c/t
     footer: <https://cscheid.net/to/esip-2023.html> ([source](https://github.com/cscheid/2023-esip-quarto-talk))
+    css:
+      - posit-colors.css
+      - rant-rave-revealjs.css
 ---
+
+<script type="module" src="talk.js"></script>
 
 # Who I am
 
-- Software engineer at [Posit](https://posit.co), have been there for just over two years
-- Recovering academic (tenured computer science prof, who then realized wanted something else)
+- Software engineer at [Posit](https://posit.co) (fka [RStudio](https://posit.co/downloads/))
+  - I've been working on Quarto since I joined Posit
+- Recovering academic (left a tenured computer science appointment)
 
-## Detour: Cayce Pollard
+## Mechanics, ground rules
 
-- Pollard is the protagonist of William Gibson's [Pattern Recognition](https://www.powells.com/book/pattern-recognition-9780425198681)
-  - (detour: [The Peripheral](https://www.powells.com/book/the-peripheral-9780425276235) is the great modern Gibson novel, but we're already far afield of this talk now)
-- she is literally physically allergic to bad logos
-- ... well, I'm physically allergic to bad software
+- Quarto is big, I won't have time to go into everything!
+- Use the links:
+  - <https://cscheid.net/to/esip-2023.html> (this presentation)
+  - <https://github.com/cscheid/2023-esip-quarto-talk> (`.qmd` source)
+- Unless I say so explicitly, what I'm telling you is my personal opinion, and **absolutely not** an official Posit stance!
 
-## Detour: Cayce Pollard
+::: {.notes}
 
-- (With apologies to [Hedberg](https://en.wikipedia.org/wiki/Mitch_Hedberg),) I used to hate software. I still do, but I used to too.
-- I can't promise you that Quarto is perfect (trust me, I _know_)
-- I can promise that we try very hard to make it good, and that we are pretty good at it.
+ACTION: drop the link on Zoom chat.
+
+If you want, I also could audible to an impromptu Quarto talk of your desire.
+These slides can serve as a reference point of entry for you.
+
+:::
+
+## Detour: Gibson's Pollard
+
+- Cayce Pollard is the protagonist of William Gibson's [Pattern Recognition](https://www.powells.com/book/pattern-recognition-9780425198681)
+- (detour$^2$: [The Peripheral](https://www.powells.com/book/the-peripheral-9780425276235) is the actually great modern Gibson novel, but that's enough of a digression already)
+
+## Detour: Pollard {background-color="#E4E4E4"}
+
+She is physically allergic to bad logos
+
+![](img/michelin.png){.absolute width="100%" top="200"}
+
+::: footer
+<https://1000logos.net/michelin-logo/>
+:::
+
+## I'm physically allergic to bad software
+
+- I'm not going to tell you what I think is bad software
+
+::: {.incremental}
+
+- We don't have enough time
+
+- ... in the remainder of this decade
+
+:::
+
+## With apologies to [Mitch Hedberg](https://en.wikipedia.org/wiki/Mitch_Hedberg), {background-color="black" background-image="img/hedberg.webp"}
+
+::: {.no-list-bullets }
+
+- I used to hate software. 
+
+::: {.incremental}
+
+- I still do, but I used to too.
+
+:::
+
+:::
+
+::: {.footer}
+
+[buzzfeed](https://www.buzzfeed.com/mrloganrhoades/a-complete-ranking-of-almost-every-single-mitch-hedberg-joke)
+
+:::
+
+## This is Rants & Raves
+
+- I'll be honest about where Quarto is [great]{.rave}, and where it is [um, not great]{.rant}
+- Quarto isn't perfect (trust me, I _know_)
+- I can promise that we try very hard to make it good, and that we are pretty good at it
 - **I think Quarto goes further into creating a good authoring experience than most other software I use on a daily basis.**
 
-## What I'm not here for, and what I am
+## I'll rave in slides that look like this {.rave}
 
-- I'm not here to sell you on Quarto, but I hope you'll like what we're doing with it
-- I'm not here to convince you one data science world is better or worse than the other
-- I _am_ here to give you perspective on the differences, how they affect organizations, and how we're designing Quarto to help
+Quarto is awesome!
+
+## I'll rant in slides that look like this {.rant}
+
+::: {.no-list-bullets .incremental}
+
+- YAML is the worst form of human-readable, human-writable structured data, except for all the others that have been tried.
+
+- (ok, I'm not going to tell you what _other_ software I think is bad)
+
+:::
+
+# I am _not_ here to:
+
+- sell you Quarto, but I hope you'll like what we're doing with it
+- convince you one data science world is better or worse than the other
+
+# I _am_ here to:
+
+- give you perspective on the differences, how they affect organizations and the practice of data science, and how we're designing Quarto to help
+- demo some noteworthy Quarto features
+
 
 # The data science worlds (so far)
 
 ## The Tidyverse
 
-- RMarkdown (knitr)
-- Tidyverse: dplyr, ggplot2, etc.
+- Code: R centric, "Tidyverse": dplyr, ggplot2, etc.
+- Documents: RMarkdown, Bookdown, Blogdown, xaringan (knitr, "yihuiverse")
 - A _Markdown document_ is the "prime" source of truth
-  - executed top-to-bottom from the start
+  - [execute top-to-bottom from the start]{.rave}
+  - [hard to execute partially]{.rant}
 
 ## The Jupyter Ecosystem
 
-- Jupyter Book, MyST Markdown
-- Python: Matplotlib, Altair, Pandas
-  - And many, many more!
+- Documents: Jupyter Book, MyST Markdown, Jupyter notebooks
+- Code: Python-centric; Matplotlib, Altair, Pandas
 - A _Jupyter notebook_ is the "prime" source of truth
-  - naturally stores execution output in a structured format
+  - [naturally stores execution output in a structured format]{.rave}
+  - [easy to execute cells out of order]{.rant}
 
 ::: {.notes}
 
@@ -64,80 +147,173 @@ Still, it's clear that R is the dominant language in the knitr/rmd authoring eco
 
 - From [our website](https://quarto.org): An open-source scientific and technical publishing system
 - A compatibility layer for the two largest data science ecosystems
-- A set of good defaults for a technical website/book
+- A rewrite of RMarkdown with multilanguage as a first-class concern
+- A set of default styles for technical websites/books
 - A way to get an accessible webpage _and_ a publication-ready PDF from the same source
-- A (really big) wrapper around Pandoc
+- A ([really big]{.rant}) wrapper around Pandoc
 
 ## Quarto: Why?
 
-- [Conway's Law](https://en.wikipedia.org/wiki/Conway's_law): "Any organization that designs a system (defined broadly) will produce a design whose structure is a copy of the organization's communication structure"
+- [Conway's Law](https://en.wikipedia.org/wiki/Conway's_law): "[Any organization that designs a system (defined broadly) will produce a design whose structure is a copy of the organization's communication structure]{.rant}"
 - We want to make it easy for you to cross the bridge to the other world and back
 
-## Quarto: How?
+## Quarto: Inputs {.rave}
 
-- Inputs: markdown, Jupyter notebooks
-- Outputs:
-  - html 
-    - single documents: papers, presentations, webpages, emails
-    - multiple documents: book chapters, websites
-  - pdf (via latex or typst)
-  - docx, pptx
-  - Confluence, Docusaurus, oh my
+- `.qmd` files: [markdown](https://quarto.org/docs/authoring/markdown-basics.html), like RMarkdown
+- `.ipynb` files: [Jupyter notebooks](https://nbformat.readthedocs.io/en/latest/), like Jupyter
+
+## Quarto: Inputs {.rant}
+
+- `.qmd` files: [markdown](https://quarto.org/docs/authoring/markdown-basics.html), like RMarkdown
+- `.ipynb` files: [Jupyter notebooks](https://nbformat.readthedocs.io/en/latest/), like Jupyter
+- Python, R, Julia (for your code)
+- YAML (for various configuration options)
+- CSS, SCSS, Javascript, Lua, LaTeX, Pandoc Templates (to get fancy)
+
+::: {.notes}
+
+If you're used to RMarkdown (or blogdown or bookdown), YAML configuration this a place where Quarto is a lot better. Quarto will often tell you about invalid YAML entries, and Quarto has IDE support for YAML autocompletion.
+
+:::
+
+## Quarto: Outputs
+
+- HTML
+  - single documents: papers, [presentations](https://quarto.org/docs/presentations/), webpages
+  - multiple documents: books (and book chapters), websites, blogs
+- [PDF](https://quarto.org/docs/output-formats/pdf-basics) (via latex or typst)
+- [docx](https://quarto.org/docs/output-formats/ms-word), [pptx](https://quarto.org/docs/reference/formats/presentations/pptx)
+- Confluence, Docusaurus, oh my
 
 # Authoring documents
 
-## Editing files 
+## Editing files
 
-- RStudio has great support, including a visual editor
-- I use VS Code
-- Any text editor (and there are e.g. Emacs and vim modes)
+- [RStudio](https://quarto.org/docs/get-started/hello/rstudio) has great Quarto support, including a visual editor
+- I use [VS Code](https://quarto.org/docs/get-started/hello/vscode)
+- Any text editor. there are e.g. [Emacs](https://github.com/quarto-dev/quarto-emacs) and [neovim](https://quarto.org/docs/get-started/hello/neovim) modes)
 
 ## Collaborating
 
 - Jupyter and knitr engines can both run on the same project
-  - Different book chapters of the same book can use different engines
-- Notebook embeds use jupyter notebooks
-  - computation can be done in quarto or any third party tool (colab, etc.)
+  - One engine per document
+  - [Both engines support multiple languages]{.rant}
+- Different book chapters of the same book can use different engines
+
+## Use notebook _fragments_ as inputs {.rave}
+
+- [Notebook embeds](https://quarto.org/docs/authoring/notebook-embed.html) use jupyter notebooks
+  - computation can be performed in quarto or any third party tool ([colab](https://research.google.com/colaboratory/), etc.)
   - refer to them directly in quarto
   - reuse them in your jupyter workflows
 
-# Publishing
+## .. but wait! {.rant}
 
-- quarto.pub: one-button publishing for HTML(+pdf, docx, etc) documents
+- Jupyter notebooks need to be executed "out of band"
+  - They can become stale.  
+    This is bad for reproducibility!
+
+# Orchestrating computation is _hard_ {background-color="black" background-image="img/sagan.png"}
+
+::: {.no-list-bullets}
+- If you wish to make an apple pie from scratch, you must first invent the universe
+
+::: {.incremental}
+- We don't get to reinvent the universe if we want people to keep their workflows
+:::
+
+:::
+
+
+
+# [Publishing](https://quarto.org/docs/publishing/)
+
+- [quarto.pub](https://quarto.pub): one-button publishing for HTML(+pdf, docx, etc) documents
 - additional first-class support for 
-  - GitHub pages
-  - Posit Connect
-  - Confluence
-  - Netlify
+  - [GitHub pages](https://quarto.org/docs/publishing/github-pages)
+  - [Posit Connect](https://quarto.org/docs/publishing/rstudio-connect)
+  - [Confluence](https://quarto.org/docs/publishing/confluence)
+  - [Netlify](https://quarto.org/docs/publishing/netlify)
 - Coming up: [MECA](https://www.niso.org/standards-committees/meca)
 
 ## Kicking the Tires
 
-So you want to extend Quarto. From easy to hard (prereqs in parenthesis):
+So you want to [extend Quarto](https://quarto.org/docs/extensions/creating). From easy to hard:
 
-- Easy (CSS/SCSS): CSS and SCSS themes
-- Easy (Javascript): custom Javascript
-- Easy-to-medium ([ObservableHQ](https://observablehq.com/)): using OJS to create interactive webpages that use R and Python outputs
-- Medium ([Pandoc](https://pandoc.org/), [Lua](https://lua.org/)): Lua filters to control the generation of the final document in any format
-- Medium-to-hard (LaTeX): custom formats (e.g. journal templates)
-- Hard (Python, TypeScript): New execution engines
+::: {.fragment .fade-in-then-semi-out}
+- Have someone else do the work for you, and [use an existing extension](https://quarto.org/docs/extensions/)
+:::
 
-# The good
+::: {.fragment .fade-in-then-semi-out}
+- [CSS and SCSS themes](https://quarto.org/docs/output-formats/html-themes)
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+- Use [OJS](https://quarto.org/docs/computations/ojs) to create interactive webpages; you can also use plain Javascript.
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+- Use [Pandoc's](https://pandoc.org/) document manipulation extensions, and write filters in [Lua](https://lua.org/) to control document generation in any format
+:::
+
+
+## Kicking the Tires
+
+So you want to [extend Quarto](https://quarto.org/docs/extensions/creating). From easy to hard:
+
+
+::: {.fragment .semi-fade-out}
+- Write [custom shortcodes](https://quarto.org/docs/extensions/shortcodes), like `{{{{< my-sweet-extension >}}}}`, to provide new functionality.
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+- Write [custom formats](https://quarto.org/docs/journals/formats.html), like journal format templates
+:::
+
+# Takeaways {.rave}
+
+::: {.incremental .fade-in-then-semi-out}
 
 - You can use quarto today to write websites, academic papers, blogs, and books.
 - You can use knitr and you can use jupyter
 - It's not a prototype! People use it in production. In VS Code alone we have >50k active users.
 - In terms of editor support, quarto is already a big improvement over RMarkdown.
+- Our YAML validation and auto-completion go a long way to help navigate the large API surface.
+
+:::
 
 ::: {.notes}
 Mention YAML validation, etc.
 :::
 
-# The bad, and the ugly
+# Takeaways {.rant}
+
+::: {.incremental .fade-in-then-semi-out}
 
 - Compared to other static generators, Quarto is slow. We have a plan, ETA early 2024.
 - Our documentation is good, but it's not great. We're working on it, and it gets better every week.
 - We wish there were more journal formats. We need your help, and we can help you help us!
 - Our error handling is better than most other tools, but it's still pretty bad.
 - It's easy to make "mistakes" that aren't Pandoc errors. We have a plan, ETA mid-to-late 2024.
-- Quarto still moves relatively fast; it's very much worth it to install the latest version, which is not necessarily easy for corporate and government users. Consider learning how to use continuous integration to get quarto to run on someone else's machine.
+
+:::
+
+# Takeaways {.rant}
+
+::: {.incremental .fade-in-then-semi-out}
+
+- Quarto still moves relatively fast; it's very much worth it to install the latest version, which is not necessarily easy for corporate and government users. 
+
+:::
+
+# Thank you! Questions?
+
+Contact: `carlos.scheidegger@posit.co`
+
+# Thank you! Questions? {.rave}
+
+Contact: `carlos.scheidegger@posit.co`
+
+# Thank you! Questions? {.rant}
+
+Contact: `carlos.scheidegger@posit.co`

@@ -1,0 +1,37 @@
+div.slide-background.rave {
+    background-color: var(--posit-blue);
+}
+
+div.slide-background.rant {
+    background-color: var(--posit-orange);
+}
+
+.light {
+    opacity: 0.2;
+}
+
+div.footer.rave, div.footer.rave a {
+    color: white;
+}
+
+div.footer.rant, div.footer.rant a {
+    color: black;
+}
+
+div.footer.rave a, div.footer.rant a {
+    text-decoration: underline;
+}
+
+span.rant {
+    color: var(--posit-orange);
+    font-weight: bold;
+}
+
+span.rave {
+    color: var(--posit-blue);
+    font-weight: bold;
+}
+
+div.no-list-bullets li {
+    list-style-type: none;
+}
