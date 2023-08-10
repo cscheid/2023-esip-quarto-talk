@@ -1,6 +1,7 @@
 ---
 title: Quarto and The Two Data Science Worlds
-author: Carlos Scheidegger
+subtitle: ESIP Rants & Raves
+author: Carlos Scheidegger, Posit PBC
 date: 2023-08-10
 format: 
   revealjs:
